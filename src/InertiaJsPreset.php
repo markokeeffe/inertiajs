@@ -14,6 +14,7 @@ class InertiaJsPreset extends Preset
         static::updateBootstrapping();
         static::updateWelcomePage();
         static::updateGitignore();
+        static::updateKernel();
         static::scaffoldComponents();
         static::scaffoldRoutes();
         static::removeNodeModules();
@@ -53,6 +54,11 @@ class InertiaJsPreset extends Preset
             file_get_contents(__DIR__.'/inertiajs-stubs/gitignore'),
             FILE_APPEND
         );
+    }
+
+    protected static function updateKernel()
+    {
+        copy(__DIR__.'/inertiajs-stubs/app/Http/Kernel.php', app_path('Http/Kernel.php'));
     }
 
     protected static function scaffoldComponents()
